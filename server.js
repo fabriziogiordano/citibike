@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import fastifyView from "@fastify/view";
+import fastifyStatic from "@fastify/static";
 
 import path from "path";
 import * as url from "url";
@@ -11,6 +12,7 @@ const app = Fastify({
   logger: false,
 });
 
+
 import { Liquid } from "liquidjs";
 const engine = new Liquid({
   root: path.join(__dirname, "templates"),
@@ -21,6 +23,11 @@ app.register(fastifyView, {
   engine: {
     liquid: engine,
   },
+});
+
+app.register(fastifyStatic, {
+  root: path.join(__dirname, 'assets'),
+  prefix: '/assets/', // optional: default '/'
 });
 
 // Declare a route

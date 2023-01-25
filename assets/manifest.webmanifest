@@ -1,0 +1,16 @@
+{
+    "background_color": "rgb(18, 66, 175)",
+    "theme_color": "rgb(18, 66, 175)",
+    "description": "Fab's Citi Bike bookmarks",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "/assets/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "name": "Fab's Citi Bike bookmarks",
+    "short_name": "Fab's Stations",
+    "start_url": "/"
+}
