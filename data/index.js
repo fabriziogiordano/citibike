@@ -62,6 +62,7 @@ export async function findAvailability() {
   if (data.status === 200) {
     let {
       data: { stations },
+      last_updated
     } = await data.json();
 
     const myStationId = myStations.map(({ station_id }) => station_id);
@@ -92,7 +93,7 @@ export async function findAvailability() {
 
     myStationsFiltered.sort((orderFirst, orderSecond) => orderFirst.order - orderSecond.order);
     // console.log(JSON.stringify(myStationsFiltered, null, 2));
-
-    return myStationsFiltered;
+    const delta = Math.round(new Date() / 1000) - last_updated;
+    return {last_updated, delta, data: myStationsFiltered};
   }
 }

@@ -106,6 +106,17 @@ button {
     margin: 0 auto;
     margin-top: 2rem;
   }
+
+  strong {
+    width: 100%;
+    margin: 0 auto;
+    color: gray;
+    position: absolute;
+    bottom: 2.4rem;
+    text-align: center;
+    font-size: 60%;
+    font-weight: 200;
+  }
 </style>
 
 <body>
@@ -143,6 +154,27 @@ button {
     {% endfor %}
   </ul>
 
-  <button type="button" onClick="window.location.reload()">Refresh</button>
+  <button id="reload" type="button" onClick="window.location.reload()">Refresh</button>
+
+  <strong id="last_update" >Last update {{ delta }} seconds ago</strong>
+
+  <script>
+    const delta = {{ delta }};
+    if(delta > 30) {
+      console.log('Reloading...');
+      document.getElementById('reload').innerText = 'Reloading....';
+      window.location.reload();
+    }
+
+
+    const $last_update = document.getElementById('last_update');
+    let last_update_counter = 0;
+    setInterval(lastUpdated, 1000);
+    function lastUpdated(){
+      last_update_counter = last_update_counter + 1;
+      const seconds = delta + last_update_counter;
+      $last_update.innerHTML = `Last update ${seconds} seconds ago<br>Auto refreshing in ${30-last_update_counter} seconds`;
+    }
+  </script>
 </body>
 </html>

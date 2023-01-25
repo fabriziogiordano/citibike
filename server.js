@@ -32,8 +32,8 @@ app.register(fastifyStatic, {
 
 // Declare a route
 app.get("/", async (request, reply) => {
-  const data = await findAvailability();
-  return reply.view("./templates/index.liquid", {data});
+  const { last_updated, delta, data } = await findAvailability();
+  return reply.view("./templates/index.liquid", { last_updated, delta, data });
 });
 
 // Run the server!
