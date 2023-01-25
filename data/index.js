@@ -15,9 +15,14 @@ const myStations = [
     order: 2,
   },
   {
-    label: "Subway Penn",
-    name: "W 31 St & 7 Ave",
+    label: "Subway Penn 1",
+    name: "W 36 St & 7 Ave",
     order: 3,
+  },
+  {
+    label: "Subway Penn 2",
+    name: "W 31 St & 7 Ave",
+    order: 4,
   },
 ];
 
