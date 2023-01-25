@@ -173,7 +173,9 @@ button {
     function lastUpdated(){
       last_update_counter = last_update_counter + 1;
       const seconds = delta + last_update_counter;
-      $last_update.innerHTML = `Last update ${seconds} seconds ago<br>Auto refreshing in ${30-last_update_counter} seconds`;
+      const next_update = 30 - last_update_counter;
+      $last_update.innerHTML = `Last update ${seconds} seconds ago<br>Auto refreshing in ${next_update} seconds`;
+      if(next_update < 1) window.location.reload();
     }
   </script>
 </body>
