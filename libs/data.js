@@ -10,12 +10,12 @@ const myStations = [
     order: 1,
   },
   {
-    label: "Work2",
+    label: "Work 2",
     name: "W 34 St & Hudson Blvd E",
     order: 2,
   },
   {
-    label: "Subway",
+    label: "Subway Penn",
     name: "W 31 St & 7 Ave",
     order: 3,
   },

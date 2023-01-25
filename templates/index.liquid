@@ -15,6 +15,12 @@
     padding: 0;
   }
 
+  h1 {
+    font-size: 140%;
+    margin: 8px;
+    margin-bottom: 2rem;
+  }
+
   ul {
     margin: .5rem;
     padding: 0;
@@ -28,33 +34,68 @@
   b {
     font-size: 100%;
     display: block;
+    margin-bottom: .5rem;
   }
 
   abbr {
     font-weight: lighter;
-    padding-left: 10px;
+    font-size: 70%;
+    display: block;
+    color: gray;
   }
 
   em {
     font-size: 80%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     font-style: normal;
   }
 
   i {
     font-style: normal;
+    width: 60px;
+    display: inline-block;
+  }
+
+  .red {
+    font-weight: bold;
+    color: red;
+  }
+
+  .green {
+    font-weight: bold;
+    color: green;
   }
 </style>
 
 <body>
+  <h1>Fab CitiBike bookmark</h1>
   <ul>
     {% for station in data %}
+    {% assign num_bikes_available_int = station.num_bikes_available | plus: 0 %}
+    {% assign num_docks_available_int = station.num_docks_available | plus: 0 %}
     <li>
       <b>{{ station.label }} <abbr>{{ station.name }}</abbr></b>
       <em>
-        <span><i>Bikes:</i> {{ station.num_bikes_available }} + {{ station.num_ebikes_available }}</span>
-        <span><i>Docks:</i> {{ station.num_docks_available }}</span>
+        <div>
+          <i>Bikes:</i>
+          <span
+            {% if num_bikes_available_int <= 2 %}class="red"{% endif %}
+            {% if num_bikes_available_int >= 10 %}class="green"{% endif %}
+          >
+            {{ station.num_bikes_available }} + {{ station.num_ebikes_available }}
+          </span>
+        </div>
+        <div>
+          <i>Docks:</i> 
+          <span
+            {% if num_docks_available_int <= 2 %}class="red"{% endif %}
+            {% if num_docks_available_int >= 10 %}class="green"{% endif %}
+          >
+            {{ station.num_docks_available }}
+          </span>
+        </div>
       </em>
     </li>
     {% else %}
