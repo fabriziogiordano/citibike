@@ -37,7 +37,7 @@
     margin-bottom: .5rem;
   }
 
-  abbr {
+  a {
     font-weight: lighter;
     font-size: 70%;
     display: block;
@@ -47,8 +47,7 @@
   em {
     font-size: 80%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
     font-style: normal;
   }
 
@@ -56,6 +55,10 @@
     font-style: normal;
     width: 60px;
     display: inline-block;
+  }
+
+  .bikes {
+    width: 200px;
   }
 
   .red {
@@ -73,33 +76,34 @@
   <h1>Fab CitiBike bookmark</h1>
   <ul>
     {% for station in data %}
-    {% assign num_bikes_available_int = station.num_bikes_available | plus: 0 %}
-    {% assign num_docks_available_int = station.num_docks_available | plus: 0 %}
-    <li>
-      <b>{{ station.label }} <abbr>{{ station.name }}</abbr></b>
-      <em>
-        <div>
-          <i>Bikes:</i>
-          <span
-            {% if num_bikes_available_int <= 2 %}class="red"{% endif %}
-            {% if num_bikes_available_int >= 10 %}class="green"{% endif %}
-          >
-            {{ station.num_bikes_available }} + {{ station.num_ebikes_available }}
-          </span>
-        </div>
-        <div>
-          <i>Docks:</i> 
-          <span
-            {% if num_docks_available_int <= 2 %}class="red"{% endif %}
-            {% if num_docks_available_int >= 10 %}class="green"{% endif %}
-          >
-            {{ station.num_docks_available }}
-          </span>
-        </div>
-      </em>
-    </li>
-    {% else %}
-    <li>The collection is empty.</li>
+      {% assign num_bikes_available_int = station.num_bikes_available | plus: 0 %}
+      {% assign num_docks_available_int = station.num_docks_available | plus: 0 %}
+      <li>
+        <b>
+          {{ station.label }}
+          <a href="https://www.google.com/maps/dir/?api=1&destination={{ station.lat }}%2C{{ station.lon }}">{{ station.name }}</a>
+        </b>
+        <em>
+          <div class="bikes">
+            <i>Bikes:</i>
+            <span
+              {% if num_bikes_available_int <= 2 %}class="red"{% endif %}
+              {% if num_bikes_available_int >= 10 %}class="green"{% endif %}
+            >
+              {{ station.num_bikes_available }} + {{ station.num_ebikes_available }}
+            </span>
+          </div>
+          <div>
+            <i>Docks:</i> 
+            <span
+              {% if num_docks_available_int <= 2 %}class="red"{% endif %}
+              {% if num_docks_available_int >= 10 %}class="green"{% endif %}
+            >
+              {{ station.num_docks_available }}
+            </span>
+          </div>
+        </em>
+      </li>
     {% endfor %}
   </ul>
 </body>
