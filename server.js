@@ -5,7 +5,7 @@ import path from "path";
 import * as url from "url";
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
-import { findAvailability } from "./libs/data.js";
+import { findAvailability } from "./data/index.js";
 
 const app = Fastify({
   logger: false,
