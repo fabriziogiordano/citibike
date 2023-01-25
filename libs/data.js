@@ -76,7 +76,7 @@ export async function findAvailability() {
           order: myStation.order,
           monster: 'true',
           name: myStation.name,
-          num_bikes_availabxle: station.num_bikes_available,
+          num_bikes_available: station.num_bikes_available,
           num_ebikes_available: station.num_ebikes_available,
           num_docks_available: station.num_docks_available,
           lat: myStation.lat,

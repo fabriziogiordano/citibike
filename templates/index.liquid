@@ -26,12 +26,19 @@
   }
 
   b {
+    font-size: 100%;
     display: block;
   }
 
+  abbr {
+    font-weight: lighter;
+    padding-left: 10px;
+  }
+
   em {
+    font-size: 80%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-style: normal;
   }
 
@@ -44,10 +51,10 @@
   <ul>
     {% for station in data %}
     <li>
-      <b>{{ station.label }} - {{ station.name }}</b>
+      <b>{{ station.label }} <abbr>{{ station.name }}</abbr></b>
       <em>
-        <span><i>bikes:</i> {{ station.num_bikes_available }} + {{ station.num_ebikes_available }}</span>
-        <span><i>docks:</i> {{ station.num_docks_available }}</span>
+        <span><i>Bikes:</i> {{ station.num_bikes_available }} + {{ station.num_ebikes_available }}</span>
+        <span><i>Docks:</i> {{ station.num_docks_available }}</span>
       </em>
     </li>
     {% else %}
@@ -55,5 +62,4 @@
     {% endfor %}
   </ul>
 </body>
-
 </html>

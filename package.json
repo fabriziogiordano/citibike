@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "node --watch server.js",
+    "pm2": "--** NOTE: The server managed by pm2 and Caddy does the port forwarding **--",
+    "server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
